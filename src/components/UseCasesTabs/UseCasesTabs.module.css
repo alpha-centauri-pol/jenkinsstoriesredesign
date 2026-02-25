@@ -282,17 +282,15 @@
 
 .previewBox {
   width: 100%;
-  max-width: 28rem;
-  height: 12rem;
   border-radius: 0.75rem;
   border: 1px solid rgba(51, 65, 85, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 2.25rem;
+  padding: 1.5rem;
   position: relative;
   overflow: hidden;
-  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .previewBoxColumn {
@@ -309,8 +307,9 @@
   backdrop-filter: blur(4px);
   border: 1px solid #475569;
   border-radius: 0.5rem;
-  padding: 2rem 1.75rem 1.75rem;
+  padding: 1.25rem 1.5rem;
   width: 100%;
+  box-sizing: border-box;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
