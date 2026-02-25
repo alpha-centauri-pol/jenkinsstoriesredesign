@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
 import { StaticImage, GatsbyImage, getImage } from 'gatsby-plugin-image';
-import Search from '../components/SearchContainer';
+import UseCasesTabs from '../components/UseCasesTabs/UseCasesTabs';
+import TestimonialsCarousel from '../components/TestimonialsCarousel/TestimonialsCarousel';
+import GlobeSection from '../components/GlobeSection/GlobeSection';
 import Layout from '../layout';
 import Seo from '../components/Seo';
 import './index.css';
@@ -103,110 +105,68 @@ React.useEffect(() => {
 
       {/* Hero Section */}
       <div ref={el => (sectionsRef.current[0] = el)} className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">Jenkins Is The Way</h1>
-          <p className="hero-subtitle">
-            Explore the latest Jenkins user stories.
-          </p>
-          <div className="hero-buttons">
-            <Link to="/all" className="hero-button">
-              View All Stories
-            </Link>
-            <Link to="/map" className="hero-button hero-button-secondary">
-              Explore Map
-            </Link>
-          </div>
-          <StaticImage
-            src="../images/Jenkins-is-the-Way-768x911.png"
-            alt="Jenkins is the way logo"
-            className="hero-image"
-          />
-        </div>
-      </div>
-
-      {/* Search Section */}
-      <div ref={el => (sectionsRef.current[1] = el)}>
-        <h1
-          style={{
-            marginTop: `3em`,
-            textAlign: `center`,
-            fontWeight: 700,
-            color: `var(--text-color)`,
-          }}
-        >
-          Search Jenkins Stories
-        </h1>
-        <div>
-          <Search />
-        </div>
-      </div>
-
-      {/* Stories Section */}
-      <div
-        ref={el => (sectionsRef.current[2] = el)}
-        className="stories-section"
-      >
-        <h2 className="section-title">Latest Jenkins User Stories</h2>
-        <p className="section-subtitle">
-          Stories from all around the world by Jenkins User
-        </p>
-
-        <div className="story-cards">
-          {stories.edges.map(({ node: story }) => (
-            <div key={story.slug} className="story-card">
-              {story.image && story.image.childImageSharp && (
-                <div className="story-image-container">
-                  <GatsbyImage
-                    image={getImage(story.image)}
-                    alt={story.title}
-                    className="story-image"
-                  />
-                </div>
-              )}
-              <h3 className="story-title">
-                <Link to={`/user-story/${story.slug}`}>
-                  {story.tag_line || story.title}
-                </Link>
-              </h3>
-              <p className="story-author">
-                Authored By Jenkins User <strong>{story.authored_by}</strong>
-              </p>
-              <p className="story-date">{story.date}</p>
+        <div className="hero-top">
+          <div className="hero-content">
+            <span className="hero-chip">SUCCESS STORIES</span>
+            <h1 className="hero-title">Jenkins Is The Way</h1>
+            <p className="hero-subtitle">
+              Explore the latest Jenkins user stories from developers and engineers around the world.
+            </p>
+            <div className="hero-buttons">
+              <Link to="/all" className="hero-button">
+                View All Stories
+              </Link>
+              <Link to="/map" className="hero-button hero-button-secondary">
+                Explore Map
+              </Link>
             </div>
-          ))}
+          </div>
         </div>
 
-        <div className="section-cta">
-          <Link className="btn-primary" to="/all">
-            Read More Stories
+        <div className="hero-cards">
+          <Link to="/all" className="hero-card">
+            <div className="hero-card-header">
+              <ion-icon name="book-outline" class="hero-card-icon"></ion-icon>
+              <h3>Browse Stories</h3>
+            </div>
+            <p>Read success stories from Jenkins users across every industry.</p>
+            <span className="hero-card-link">Learn more &rarr;</span>
+          </Link>
+          <Link to="/map" className="hero-card">
+            <div className="hero-card-header">
+              <ion-icon name="globe-outline" class="hero-card-icon"></ion-icon>
+              <h3>Explore the Map</h3>
+            </div>
+            <p>See where Jenkins is making an impact around the world.</p>
+            <span className="hero-card-link">Learn more &rarr;</span>
+          </Link>
+          <Link to="/all" className="hero-card">
+            <div className="hero-card-header">
+              <ion-icon name="create-outline" class="hero-card-icon"></ion-icon>
+              <h3>Share Your Story</h3>
+            </div>
+            <p>Contribute your own Jenkins success story to the community.</p>
+            <span className="hero-card-link">Learn more &rarr;</span>
+          </Link>
+          <Link to="/map" className="hero-card">
+            <div className="hero-card-header">
+              <ion-icon name="search-outline" class="hero-card-icon"></ion-icon>
+              <h3>Search &amp; Filter</h3>
+            </div>
+            <p>Find stories by country, industry, or technology stack.</p>
+            <span className="hero-card-link">Learn more &rarr;</span>
           </Link>
         </div>
       </div>
 
-      {/* Map Section */}
-      <div ref={el => (sectionsRef.current[3] = el)} className="map-section">
-        <h2 className="section-title">Discover More</h2>
-        <div className="map-content">
-          <Link to="/map">
-            {isDarkMode ? (
-              <StaticImage
-                src="../images/map_screenshot.png"
-                alt="Screenshot of pins on a map"
-                className="map-image"
-              />
-            ) : (
-              <StaticImage
-                src="../images/map_screenshot_light.png"
-                alt="Screenshot of pins on a map"
-                className="map-image"
-              />
-            )}
-          </Link>
-          <Link className="btn-primary" to="/map">
-            Visit the Map
-          </Link>
-        </div>
-      </div>
+      {/* Use Cases */}
+      <UseCasesTabs />
+
+      {/* Globe Interactive Section */}
+      <GlobeSection />
+
+      {/* Testimonials */}
+      <TestimonialsCarousel />
     </Layout>
   );
 };

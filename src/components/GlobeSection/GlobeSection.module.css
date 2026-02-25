@@ -1,0 +1,669 @@
+/* ── Outer wrapper ── */
+.wrapper {
+  background-color: transparent;
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.wrapperInner {
+  position: relative;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 7rem 1.5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Globe section container ── */
+.container {
+  position: relative;
+  width: 100%;
+  height: 900px;
+  z-index: 10;
+}
+
+.containerFixed {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  background: #0a0c10;
+}
+
+/* ── Home title ── */
+.homeTitle {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  text-align: center;
+  z-index: 20;
+  width: 100%;
+  max-width: 48rem;
+  transform: translateX(-50%);
+  transition: all 500ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.homeTitleHidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-48px);
+  pointer-events: none;
+}
+
+.homeTitleHeading {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.25rem;
+  color: #e2e8f0;
+}
+
+.homeTitleDesc {
+  color: #94a3b8;
+  font-size: 1.125rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Mission overlay ── */
+.missionOverlay {
+  position: absolute;
+  top: 6%;
+  left: 8%;
+  right: 8%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: all 1000ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.missionOverlayVisible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.missionLeft {
+  max-width: 36rem;
+}
+
+.missionLabel {
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-family: monospace;
+}
+
+.missionHeading {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #e2e8f0;
+  white-space: pre-line;
+  transition: color 1000ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.missionHeadingDimmed {
+  color: #64748b;
+}
+
+.missionDesc {
+  font-size: 0.95rem;
+  line-height: 1.625;
+  max-width: 28rem;
+  color: #94a3b8;
+  transition: all 1000ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.missionDescDimmed {
+  opacity: 0.2;
+}
+
+/* ── Region stats ── */
+.regionStats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 420px;
+  transition: all 1000ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.regionStatsDimmed {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateX(48px);
+}
+
+.statsRow {
+  display: flex;
+  gap: 3rem;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  max-width: 140px;
+  line-height: 1.625;
+}
+
+.goalsList {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.goalsList > * + * {
+  margin-top: 0.75rem;
+}
+
+.goalText {
+  line-height: 1.625;
+}
+
+/* ── Back button ── */
+.backNav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.backBtnWrap {
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: all 1000ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.backBtnWrapVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.backBtnWrapHidden {
+  pointer-events: none;
+}
+
+.backBtn {
+  color: #94a3b8;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: #fff;
+}
+
+/* ── Globe wrap ── */
+.globeWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  width: 520px;
+  height: 520px;
+  transform: translate(-50%, -50%) translateY(12%) scale(1);
+  transition: all 1000ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.globeClip {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.globeContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: grab;
+  border-radius: 50%;
+  pointer-events: auto;
+}
+
+/* ── Pills layer ── */
+.pillsLayer {
+  position: absolute;
+  inset: 0;
+  transition: all 500ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.pillsLayerHidden {
+  opacity: 0;
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+.pillWrap {
+  position: absolute;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.pill {
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid #334155;
+  background-color: rgba(10, 12, 16, 0.5);
+  color: #94a3b8;
+  backdrop-filter: blur(4px);
+  transition: all 300ms;
+}
+
+.pill:hover {
+  border-color: #3b82f6;
+}
+
+.pillActive {
+  background-color: #fff;
+  color: #0a0c10;
+  border-color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.pillDimmed {
+  opacity: 0.5;
+}
+
+/* ── Pill popover ── */
+.popover {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.3);
+  width: 320px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 400ms ease-out;
+}
+
+.popoverLeft {
+  right: 100%;
+  margin-right: 16px;
+  transform-origin: right center;
+}
+
+.popoverRight {
+  left: 100%;
+  margin-left: 16px;
+  transform-origin: left center;
+}
+
+.popoverVisible {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.popoverBubble {
+  position: absolute;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 500ms ease-out;
+  transform: scale(0);
+}
+
+.popoverBubbleVisible {
+  transform: scale(1);
+}
+
+.popoverText {
+  position: absolute;
+  top: 115px;
+  width: 280px;
+  transition: all 400ms ease-out;
+  opacity: 0;
+  transform: translateY(4px) scale(0.8);
+}
+
+.popoverTextLeft {
+  right: 8px;
+  text-align: right;
+  transform-origin: right center;
+}
+
+.popoverTextRight {
+  left: 8px;
+  text-align: left;
+  transform-origin: left center;
+}
+
+.popoverTextVisible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.popoverHoverDesc {
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.625;
+  margin-bottom: 0.75rem;
+  font-weight: 300;
+  max-width: 240px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.exploreBtn {
+  color: #60a5fa;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+  pointer-events: auto;
+  cursor: pointer;
+  padding: 0;
+}
+
+.exploreBtn:hover {
+  color: #fff;
+}
+
+.exploreBtnLeft {
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* ── Bubbles layer ── */
+.bubblesLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+  transition: all 1000ms cubic-bezier(0.3, 0, 0.1, 1);
+}
+
+.bubblesLayerVisible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.companyBubble {
+  position: absolute;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.companyBubble:hover {
+  transform: scale(1.1);
+  border-color: #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.companyName {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* ── Earth view button ── */
+.earthBtn {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  z-index: 40;
+  transform: translateX(-50%) translateY(12px);
+  opacity: 0;
+  filter: blur(6px);
+  pointer-events: none;
+  transition: all 200ms ease-out;
+}
+
+.earthBtnVisible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  filter: blur(0);
+  pointer-events: auto;
+}
+
+.earthBtnButton {
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  background-color: #14161a;
+  border: 1px solid #334155;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.earthBtnButton:hover {
+  background-color: #0a0c10;
+  border-color: #3b82f6;
+}
+
+.earthBtnIcon {
+  opacity: 0.7;
+  color: #60a5fa;
+}
+
+/* ── Detail card ── */
+.detailCard {
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  width: 680px;
+  z-index: 50;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid #334155;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+  pointer-events: none;
+  transition:
+    opacity 150ms ease-out,
+    transform 180ms ease-out,
+    filter 180ms ease-out;
+}
+
+.detailCardVisible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  pointer-events: auto;
+}
+
+.detailHeader {
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detailHeaderTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.025em;
+}
+
+.detailCloseBtn {
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.detailCloseBtn:hover {
+  color: #fff;
+}
+
+.detailBody {
+  background-color: #14161a;
+  padding: 2rem;
+}
+
+.detailColumns {
+  display: flex;
+  gap: 2rem;
+}
+
+.detailMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.detailLabel {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  font-family: monospace;
+}
+
+.detailQuote {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 300;
+  color: #e2e8f0;
+  margin-bottom: 0.5rem;
+}
+
+.detailAuthor {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+.detailParagraph {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.625;
+  margin-bottom: 1rem;
+}
+
+.detailGoals {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.detailGoals > * + * {
+  margin-top: 1rem;
+}
+
+.detailGoalRow {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.detailGoalDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.detailGoalText {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  line-height: 1.625;
+}
+
+.detailResources {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #334155;
+}
+
+.detailResourcesLabel {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-family: monospace;
+}
+
+.detailResourcesLinks {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.detailResourceLink {
+  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.25rem;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.detailResourceLink:hover {
+  color: #60a5fa;
+  border-bottom-color: #60a5fa;
+}
+
+/* ── Overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(10, 12, 16, 0);
+  pointer-events: none;
+  transition: background 1000ms ease;
+}
+
+.overlayActive {
+  background: rgba(10, 12, 16, 0.92);
+  pointer-events: auto;
+}

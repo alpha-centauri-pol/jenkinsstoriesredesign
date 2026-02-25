@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "cheerio": "^1.1.2",
+    "d3": "^7.9.0",
     "decap-cms": "3.10.0",
     "decap-cms-app": "3.6.4",
     "eslint-config-react-app": "^7.0.1",
@@ -38,6 +39,7 @@
     "js-search": "^2.0.1",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.5.3",
+    "lucide-react": "^0.575.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -52,6 +54,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.9",
     "@jenkinsci/gatsby-plugin-jenkins-layout": "^1.7.0",
+    "agentation": "^2.2.1",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-promise": "^7.2.1",
